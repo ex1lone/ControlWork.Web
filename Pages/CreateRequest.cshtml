@@ -1,0 +1,31 @@
+﻿@page
+@model ControlWork.Web.Pages.CreateRequestModel
+@{
+    ViewData["Title"] = "Створити заявку на резерв";
+}
+
+<h2>Створення заявки на резервування товару</h2>
+
+<form method="post" class="mt-4">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="ResourceRequest.ResourceId" class="form-label">Виберіть товар</label>
+        <select asp-for="ResourceRequest.ResourceId" class="form-control">
+            <option value="">-- Оберіть товар --</option>
+            @foreach (var res in Model.Resources)
+            {
+                <option value="@res.Id">@res.Name (SKU: @res.Sku) — Доступно: @res.Quantity шт.</option>
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ResourceRequest.Quantity" class="form-label">Кількість для резерву (N)</label>
+        <input asp-for="ResourceRequest.Quantity" class="form-control" />
+        <span asp-validation-for="ResourceRequest.Quantity" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Створити заявку</button>
+    <a asp-page="/Resources" class="btn btn-secondary">Назад до каталогу</a>
+</form>

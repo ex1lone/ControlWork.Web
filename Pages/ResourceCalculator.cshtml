@@ -1,0 +1,49 @@
+﻿@page "/resource-calculator"
+@model ControlWork.Web.Pages.ResourceCalculatorModel
+@using ControlWork.Web.Models
+
+<h3>Інтерактивний каталог та калькулятор вартості</h3>
+
+<form method="get">
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label class="form-label">Фільтр за брендом:</label>
+            <input type="text" name="SearchBrand" value="@Model.SearchBrand" class="form-control" placeholder="Введіть бренд..." />
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Максимальна ціна: @Model.MaxPrice грн</label>
+            <input type="range" name="MaxPrice" min="10" max="50000" step="100" value="@Model.MaxPrice" class="form-range" oninput="this.form.submit()" />
+        </div>
+        <div class="col-md-4 align-self-end">
+            <button type="submit" class="btn btn-primary">Застосувати</button>
+        </div>
+    </div>
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Назва</th>
+            <th>SKU</th>
+            <th>Бренд</th>
+            <th>Ціна (грн)</th>
+            <th>Доступно (шт.)</th>
+            <th>Калькулятор (сума)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var r in Model.FilteredResources)
+        {
+            <tr>
+                <td>@r.Name</td>
+                <td>@r.Sku</td>
+                <td>@r.Brand</td>
+                <td>@r.Price</td>
+                <td>@r.Quantity</td>
+                <td>
+                    <span class="fw-bold">@(r.Price) грн</span>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

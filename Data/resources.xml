@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+	<Resource>
+		<Sku>SKU-001</Sku>
+		<Name>Ноутбук ASUS</Name>
+		<Brand>ASUS</Brand>
+		<Price>25000</Price>
+		<Quantity>10</Quantity>
+		<CategoryId>1</CategoryId>
+	</Resource>
+	<Resource>
+		<Sku>SKU-002</Sku>
+		<Name>Мишка Logitech</Name>
+		<Brand>Logitech</Brand>
+		<Price>1500</Price>
+		<Quantity>50</Quantity>
+		<CategoryId>2</CategoryId>
+	</Resource>
+</Catalog>

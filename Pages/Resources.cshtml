@@ -1,0 +1,38 @@
+﻿@page
+@model ControlWork.Web.Pages.ResourcesModel
+@using ControlWork.Web.Services
+@using ControlWork.Web.Models
+@inject ResourceService ResourceService
+
+@{
+    ViewData["Title"] = "Ресурси";
+    var resources = ResourceService.GetAllResources();
+}
+
+<h2>Управління ресурсами</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Назва</th>
+            <th>SKU</th>
+            <th>Бренд</th>
+            <th>Ціна (грн)</th>
+            <th>Кількість</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var r in resources)
+        {
+            <tr>
+                <td>@r.Id</td>
+                <td>@r.Name</td>
+                <td>@r.Sku</td>
+                <td>@r.Brand</td>
+                <td>@r.Price.ToString("N2")</td>
+                <td>@r.Quantity</td>
+            </tr>
+        }
+    </tbody>
+</table>
